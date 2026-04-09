@@ -135,8 +135,23 @@ libero_suites = [
 "libero_object_lan",
 "libero_object_object",
 "libero_object_swap",
+"libero_object_basket_swap",
+"libero_object_target_xy_variance",
 "libero_object_task",
 "libero_object_env",
+"libero_object_temp_x0.1",
+"libero_object_temp_x0.2",
+"libero_object_temp_x0.3",
+"libero_object_temp_x0.4",
+"libero_object_temp_x0.5",
+"libero_object_temp_y0.1",
+"libero_object_temp_y0.2",
+"libero_object_temp_y0.3",
+"libero_object_temp_y0.4",
+"libero_object_temp_y0.5",
+"libero_object_target_pos_var20x20",
+"libero_object_permutation",
+"libero_object_all_variance",
 ]
 task_maps = {}
 max_len = 0
@@ -826,6 +841,41 @@ class LIBERO_OBJECT_SWAP(Benchmark):
         self._make_benchmark()
 
 @register_benchmark
+class LIBERO_OBJECT_BASKET_SWAP(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_basket_swap"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_TARGET_XY_VARIANCE(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_target_xy_variance"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_TARGET_POS_VAR20X20(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_target_pos_var20x20"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_PERMUTATION(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_permutation"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_ALL_VARIANCE(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_all_variance"
+        self._make_benchmark()
+
+@register_benchmark
 class LIBERO_GOAL_TASK(Benchmark):
     def __init__(self, task_order_index=0):
         super().__init__(task_order_index=task_order_index)
@@ -881,4 +931,74 @@ class LIBERO_OBJECT_ENV(Benchmark):
     def __init__(self, task_order_index=0):
         super().__init__(task_order_index=task_order_index)
         self.name = "libero_object_env"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_TEMP_X0_1(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_temp_x0.1"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_TEMP_X0_2(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_temp_x0.2"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_TEMP_X0_3(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_temp_x0.3"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_TEMP_X0_4(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_temp_x0.4"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_TEMP_X0_5(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_temp_x0.5"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_TEMP_Y0_1(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_temp_y0.1"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_TEMP_Y0_2(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_temp_y0.2"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_TEMP_Y0_3(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_temp_y0.3"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_TEMP_Y0_4(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_temp_y0.4"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_TEMP_Y0_5(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_temp_y0.5"
         self._make_benchmark()
