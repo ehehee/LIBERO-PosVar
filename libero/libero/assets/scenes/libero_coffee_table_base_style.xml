@@ -56,8 +56,18 @@
     <geom pos="-2 0 1.5" quat="0.5 0.5 0.5 0.5" size="1.5 1.5 0.01" type="box" conaffinity="0" contype="0" group="1" name="wall_rear_visual" material="walls_mat"/>
     <geom pos="3 0 1.5" quat="0.5 0.5 -0.5 -0.5" size="3 1.5 0.01" type="box" conaffinity="0" contype="0" group="1" name="wall_front_visual" material="walls_mat"/>
     <!-- Table body -->
-    <light name="light1" diffuse=".8 .8 .8" dir="0 -.15 -1" directional="false" pos="1 1 4.0" specular="0.3 0.3 0.3" castshadow="false"/>
-    <light name="light2" diffuse=".8 .8 .8" dir="0 -.15 -1" directional="false" pos="-3. -3. 4.0" specular="0.3 0.3 0.3" castshadow="false"/>
+    <!-- Key light: maximum brightness overhead -->
+    <light name="light1" diffuse="1.5 1.5 1.5" dir="0 -.15 -1" directional="true" pos="0.5 0 3.5" specular="0.4 0.4 0.4" castshadow="false"/>
+    <!-- Fill light: strong, from left side to eliminate shadows -->
+    <light name="light2" diffuse="1.3 1.3 1.3" dir="0.3 0.2 -1" directional="true" pos="-2 1 3.5" specular="0.2 0.2 0.2" castshadow="false"/>
+    <!-- Rim/back light: strong fill from behind -->
+    <light name="light3" diffuse="1.1 1.1 1.1" dir="-0.2 -0.3 -1" directional="true" pos="1.5 -1 3.5" specular="0.15 0.15 0.15" castshadow="false"/>
+    <!-- Ambient boost: strong overhead wide coverage -->
+    <light name="light4" diffuse="1.0 1.0 1.0" dir="0 0 -1" directional="true" pos="0 0 4.0" specular="0.1 0.1 0.1" castshadow="false"/>
+    <!-- Table spotlight: focused on workspace for label readability -->
+    <light name="light5" diffuse="0.9 0.9 0.9" dir="0 0 -1" directional="false" pos="0.3 0 2.0" specular="0.1 0.1 0.1" castshadow="false"/>
+    <!-- Extra front fill: reduce any remaining shadows on labels -->
+    <light name="light6" diffuse="0.8 0.8 0.8" dir="0.1 0 -1" directional="true" pos="1 0 3.0" specular="0.05 0.05 0.05" castshadow="false"/>
 
     <!-- front view -->
     <camera mode="fixed" name="frontview" pos="1.0 0 1.45" quat="0.56 0.43 0.43 0.56"/>

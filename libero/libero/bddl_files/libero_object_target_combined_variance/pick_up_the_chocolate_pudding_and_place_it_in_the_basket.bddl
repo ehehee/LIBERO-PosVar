@@ -1,0 +1,92 @@
+(define (problem LIBERO_Floor_Manipulation)
+  (:domain robosuite)
+  (:language Pick the chocolate pudding and place it in the basket)
+    (:regions
+      (bin_region
+          (:target floor)
+          (:ranges (
+              (-0.17454954045027657 0.03626128673922561 -0.12454954045027658 0.0862612867392256)
+            )
+          )
+      )
+      (target_object_region
+          (:target floor)
+          (:ranges (
+              (-0.22455794469603027 -0.28901453987253256 -0.17455794469603028 -0.23901453987253254)
+            )
+          )
+      )
+      (other_object_region_0
+          (:target floor)
+          (:ranges (
+              (0.024999999999999988 -0.12499999999999997 0.075 -0.07499999999999998)
+            )
+          )
+      )
+      (other_object_region_1
+          (:target floor)
+          (:ranges (
+              (-0.01 0.25 0.01 0.27)
+            )
+          )
+      )
+      (other_object_region_2
+          (:target floor)
+          (:ranges (
+              (0.09208203932499369 -0.25916407864998736 0.1420820393249937 -0.20916407864998737)
+            )
+          )
+      )
+      (other_object_region_3
+          (:target floor)
+          (:ranges (
+              (0.125 0.0049999999999999975 0.175 0.055)
+            )
+          )
+      )
+      (other_object_region_4
+          (:target floor)
+          (:ranges (
+              (-0.225 -0.10500000000000001 -0.17500000000000002 -0.055)
+            )
+          )
+      )
+      (contain_region
+          (:target basket_1)
+      )
+    )
+
+  (:fixtures
+    floor - floor
+  )
+
+  (:objects
+    chocolate_pudding_1 - chocolate_pudding
+    basket_1 - basket
+    orange_juice_1 - orange_juice
+    bbq_sauce_1 - bbq_sauce
+    ketchup_1 - ketchup
+    salad_dressing_1 - salad_dressing
+    alphabet_soup_1 - alphabet_soup
+  )
+
+  (:obj_of_interest
+    chocolate_pudding_1
+    basket_1
+  )
+
+  (:init
+    (On salad_dressing_1 floor_target_object_region)
+    (On chocolate_pudding_1 floor_other_object_region_0)
+    (On alphabet_soup_1 floor_other_object_region_1)
+    (On bbq_sauce_1 floor_other_object_region_2)
+    (On ketchup_1 floor_other_object_region_3)
+    (On orange_juice_1 floor_other_object_region_4)
+    (On basket_1 floor_bin_region)
+  )
+
+  (:goal
+    (And (In chocolate_pudding_1 basket_1_contain_region))
+  )
+
+)

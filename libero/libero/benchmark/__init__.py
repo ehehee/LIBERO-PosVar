@@ -137,6 +137,9 @@ libero_suites = [
 "libero_object_swap",
 "libero_object_basket_swap",
 "libero_object_target_xy_variance",
+"libero_object_target_combined_variance",
+"libero_object_target_permutation_variance",
+"libero_object_target_basket_swap_variance",
 "libero_object_task",
 "libero_object_env",
 "libero_object_temp_x0.1",
@@ -852,6 +855,27 @@ class LIBERO_OBJECT_TARGET_XY_VARIANCE(Benchmark):
     def __init__(self, task_order_index=0):
         super().__init__(task_order_index=task_order_index)
         self.name = "libero_object_target_xy_variance"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_TARGET_COMBINED_VARIANCE(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_target_combined_variance"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_TARGET_PERMUTATION_VARIANCE(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_target_permutation_variance"
+        self._make_benchmark()
+
+@register_benchmark
+class LIBERO_OBJECT_TARGET_BASKET_SWAP_VARIANCE(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_object_target_basket_swap_variance"
         self._make_benchmark()
 
 @register_benchmark
