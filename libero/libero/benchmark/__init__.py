@@ -155,6 +155,7 @@ libero_suites = [
 "libero_object_target_pos_var20x20",
 "libero_object_permutation",
 "libero_object_all_variance",
+"libero_popcorn_production",
 ]
 task_maps = {}
 max_len = 0
@@ -897,6 +898,21 @@ class LIBERO_OBJECT_ALL_VARIANCE(Benchmark):
     def __init__(self, task_order_index=0):
         super().__init__(task_order_index=task_order_index)
         self.name = "libero_object_all_variance"
+        self._make_benchmark()
+
+
+@register_benchmark
+class LIBERO_POPCORN_PRODUCTION(Benchmark):
+    """Single-task suite: place frypan on stove → on → off → off-stove.
+
+    Per-stage success is enforced by the custom problem class
+    ``Libero_Kitchen_Popcorn_Production`` (see
+    ``libero/envs/problems/libero_kitchen_popcorn_production.py``).
+    """
+
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_popcorn_production"
         self._make_benchmark()
 
 @register_benchmark

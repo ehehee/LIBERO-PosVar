@@ -1604,4 +1604,8 @@ libero_task_map = {
         "pick_up_the_orange_juice_and_place_it_in_the_basket",
     ],
 
+    "libero_popcorn_production": [
+        "KITCHEN_SCENE9_popcorn_production",
+    ],
+
 }

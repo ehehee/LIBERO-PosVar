@@ -27,8 +27,14 @@ TASK_MAPPING = {}
 
 
 def register_problem(target_class):
-    """We design the mapping to be case-INsensitive."""
+    """We design the mapping to be case-INsensitive.
+
+    Returns the class unchanged so subclasses can ``import`` and extend
+    it; the historical implementation returned ``None``, which silently
+    broke subclassing.
+    """
     TASK_MAPPING[target_class.__name__.lower()] = target_class
+    return target_class
 
 
 import time
