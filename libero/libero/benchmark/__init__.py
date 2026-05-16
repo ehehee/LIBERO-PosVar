@@ -156,6 +156,7 @@ libero_suites = [
 "libero_object_permutation",
 "libero_object_all_variance",
 "libero_popcorn_production",
+"libero_crate_washing",
 ]
 task_maps = {}
 max_len = 0
@@ -914,6 +915,24 @@ class LIBERO_POPCORN_PRODUCTION(Benchmark):
         super().__init__(task_order_index=task_order_index)
         self.name = "libero_popcorn_production"
         self._make_benchmark()
+
+
+@register_benchmark
+class LIBERO_CRATE_WASHING(Benchmark):
+    """Bimanual single-task suite: lift the top crate onto the washing machine.
+
+    Two Franka Pandas standing on a shared platform must grasp the top crate
+    of an 11-crate stack and place it on the adjacent washing-machine table.
+    Per-stage progress (``lifted`` → ``placed``) is exposed by the custom
+    problem class ``Libero_Crate_Washing`` (see
+    ``libero/envs/problems/libero_crate_washing.py``).
+    """
+
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "libero_crate_washing"
+        self._make_benchmark()
+
 
 @register_benchmark
 class LIBERO_GOAL_TASK(Benchmark):

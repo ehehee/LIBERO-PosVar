@@ -1608,4 +1608,8 @@ libero_task_map = {
         "KITCHEN_SCENE9_popcorn_production",
     ],
 
+    "libero_crate_washing": [
+        "CRATE_WASHING_SCENE0_lift_crate",
+    ],
+
 }

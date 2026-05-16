@@ -1,0 +1,31 @@
+(define (problem Libero_Crate_Washing)
+  (:domain robosuite)
+  (:language lift the top crate off the stack with both arms and place it on the washing machine table)
+
+  (:regions
+  )
+
+  (:fixtures
+    crate_machine_1 - crate_machine
+    robot_platform_1 - robot_platform
+  )
+
+  (:objects
+    crate_box_11_1 - crate_box
+  )
+
+  (:obj_of_interest
+    crate_box_11
+  )
+
+  (:init
+  )
+
+  (:goal
+    (Sequence
+      (Lifted crate_box_11)
+      (Placed crate_box_11)
+    )
+  )
+
+)

@@ -7,3 +7,4 @@ from .libero_living_room_tabletop_manipulation import (
 )
 from .libero_kitchen_tabletop_manipulation import Libero_Kitchen_Tabletop_Manipulation
 from .libero_kitchen_popcorn_production import Libero_Kitchen_Popcorn_Production
+from .libero_crate_washing import Libero_Crate_Washing
