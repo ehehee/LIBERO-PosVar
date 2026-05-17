@@ -1,201 +1,204 @@
 <mujoco model="libero_crate_washing">
-  <!-- Stripped copy of crate-washing-sim/scenes/crate_washing.xml for LIBERO-PRO.
-       The two Franka Panda arms, their materials/meshes/defaults/tendons/equality/
-       actuators/contacts, and the panda portion of the home keyframe have been
-       removed; LIBERO-PRO attaches its own robosuite-vendored Panda(s) via the
-       standard `mujoco_robots=[...]` merge path. The interior room (floor / walls
-       / ceiling / Bosch signage), the washing machine + proxy table-top collision
-       box, the eleven-crate stack (only the top crate has a freejoint), the robot
-       platform, and the `top` / `scene` cameras are preserved verbatim. -->
-  <!-- meshdir / texturedir intentionally omitted: robosuite's MujocoXML.
-       resolve_asset_dependency() resolves <mesh file="..."/> and
-       <texture file="..."/> attributes relative to the XML's own directory
-       (the compiler attributes are ignored). All file paths below are
-       therefore expressed relative to this XML at
-       libero/libero/assets/scenes/crate_washing/scenes/. -->
-  <compiler angle="radian" autolimits="true" boundmass="0.001" boundinertia="0.001"/>
-  <statistic extent="0.5" center="0 0 1.0"/>
-
+  <compiler angle="radian" autolimits="true" boundmass="0.001" boundinertia="0.001" />
+  <statistic extent="0.5" center="0 0 1.0" />
   <option integrator="implicitfast" timestep="0.0005" solver="Newton" iterations="30" cone="elliptic" noslip_iterations="10">
-    <flag multiccd="enable"/>
+    <flag multiccd="enable" />
   </option>
-  <size memory="64M"/>
-
+  <size memory="64M" />
   <visual>
-    <global azimuth="120" elevation="-20" offwidth="1920" offheight="1080"/>
-    <quality shadowsize="8192" offsamples="16"/>
-    <headlight ambient="0.65 0.65 0.65" diffuse="0.20 0.20 0.20" specular="0 0 0"/>
-    <map znear="0.005" zfar="50"/>
-    <rgba haze="1.0 1.0 1.0 1"/>
+    <global azimuth="120" elevation="-20" offwidth="1920" offheight="1080" />
+    <quality shadowsize="8192" offsamples="16" />
+    <headlight ambient="0.65 0.65 0.65" diffuse="0.20 0.20 0.20" specular="0 0 0" />
+    <map znear="0.005" zfar="50" />
+    <rgba haze="1.0 1.0 1.0 1" />
   </visual>
-
   <asset>
-    <!-- Room materials, plus fallback diffuse colors for the crate meshes. -->
-    <material name="room_white"   rgba="0.97 0.97 0.97 1"/>
-    <material name="room_floor"   rgba="0.92 0.92 0.92 1"/>
-    <material name="room_ceiling" rgba="0.99 0.99 0.99 1"/>
-    <material name="crate_machine_default" rgba="0.55 0.55 0.60 1"/>
-    <material name="crate_box_default"     rgba="0.2 0.2 0.2 1"/>
-
-    <!-- Crate machine visual mesh (authored in decimeters; scale 0.1 -> meters). -->
-    <mesh name="crate_machine_visual" file="../sim_models/crate_washing/crate_machine_flat.obj" scale="0.1 0.1 0.1"/>
-
-    <!-- Crate box visual mesh (authored in meters, thin axis = stacking direction). -->
-    <mesh name="crate_box_visual" file="../sim_models/crate_washing/crate_with_handles_v3/black_crate_flat.obj"/>
-
-    <!-- White skybox so any out-of-room pixels read as clean white. -->
-    <texture type="skybox" builtin="gradient" rgb1="1.0 1.0 1.0" rgb2="0.98 0.98 0.98" width="512" height="3072"/>
-
-    <!-- Bosch logo texture + material for the four wall-mounted signs. -->
-    <texture type="2d" name="bosch_logo" file="../sim_models/crate_washing/bosch_logo.png"/>
-    <material name="bosch_logo_mat" texture="bosch_logo" texuniform="false" texrepeat="1 1"/>
+    <material name="room_white" rgba="0.97 0.97 0.97 1" />
+    <material name="room_floor" rgba="0.92 0.92 0.92 1" />
+    <material name="room_ceiling" rgba="0.99 0.99 0.99 1" />
+    <material name="crate_machine_default" rgba="0.55 0.55 0.60 1" />
+    <material name="crate_box_default" rgba="0.2 0.2 0.2 1" />
+    <mesh name="crate_machine_visual" file="../sim_models/crate_washing/crate_machine_flat.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_00" file="../sim_models/crate_washing/crate_machine_collision/part_00.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_01" file="../sim_models/crate_washing/crate_machine_collision/part_01.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_02" file="../sim_models/crate_washing/crate_machine_collision/part_02.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_03" file="../sim_models/crate_washing/crate_machine_collision/part_03.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_04" file="../sim_models/crate_washing/crate_machine_collision/part_04.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_05" file="../sim_models/crate_washing/crate_machine_collision/part_05.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_06" file="../sim_models/crate_washing/crate_machine_collision/part_06.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_07" file="../sim_models/crate_washing/crate_machine_collision/part_07.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_08" file="../sim_models/crate_washing/crate_machine_collision/part_08.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_09" file="../sim_models/crate_washing/crate_machine_collision/part_09.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_10" file="../sim_models/crate_washing/crate_machine_collision/part_10.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_11" file="../sim_models/crate_washing/crate_machine_collision/part_11.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_12" file="../sim_models/crate_washing/crate_machine_collision/part_12.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_13" file="../sim_models/crate_washing/crate_machine_collision/part_13.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_14" file="../sim_models/crate_washing/crate_machine_collision/part_14.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_15" file="../sim_models/crate_washing/crate_machine_collision/part_15.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_16" file="../sim_models/crate_washing/crate_machine_collision/part_16.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_17" file="../sim_models/crate_washing/crate_machine_collision/part_17.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_18" file="../sim_models/crate_washing/crate_machine_collision/part_18.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_19" file="../sim_models/crate_washing/crate_machine_collision/part_19.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_20" file="../sim_models/crate_washing/crate_machine_collision/part_20.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_21" file="../sim_models/crate_washing/crate_machine_collision/part_21.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_22" file="../sim_models/crate_washing/crate_machine_collision/part_22.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_23" file="../sim_models/crate_washing/crate_machine_collision/part_23.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_24" file="../sim_models/crate_washing/crate_machine_collision/part_24.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_25" file="../sim_models/crate_washing/crate_machine_collision/part_25.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_26" file="../sim_models/crate_washing/crate_machine_collision/part_26.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_27" file="../sim_models/crate_washing/crate_machine_collision/part_27.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_28" file="../sim_models/crate_washing/crate_machine_collision/part_28.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_29" file="../sim_models/crate_washing/crate_machine_collision/part_29.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_30" file="../sim_models/crate_washing/crate_machine_collision/part_30.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_31" file="../sim_models/crate_washing/crate_machine_collision/part_31.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_32" file="../sim_models/crate_washing/crate_machine_collision/part_32.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_33" file="../sim_models/crate_washing/crate_machine_collision/part_33.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_34" file="../sim_models/crate_washing/crate_machine_collision/part_34.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_35" file="../sim_models/crate_washing/crate_machine_collision/part_35.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_36" file="../sim_models/crate_washing/crate_machine_collision/part_36.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_37" file="../sim_models/crate_washing/crate_machine_collision/part_37.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_38" file="../sim_models/crate_washing/crate_machine_collision/part_38.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_39" file="../sim_models/crate_washing/crate_machine_collision/part_39.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_40" file="../sim_models/crate_washing/crate_machine_collision/part_40.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_41" file="../sim_models/crate_washing/crate_machine_collision/part_41.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_42" file="../sim_models/crate_washing/crate_machine_collision/part_42.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_43" file="../sim_models/crate_washing/crate_machine_collision/part_43.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_44" file="../sim_models/crate_washing/crate_machine_collision/part_44.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_45" file="../sim_models/crate_washing/crate_machine_collision/part_45.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_46" file="../sim_models/crate_washing/crate_machine_collision/part_46.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_machine_col_47" file="../sim_models/crate_washing/crate_machine_collision/part_47.obj" scale="0.1 0.1 0.1" />
+    <mesh name="crate_box_visual" file="../sim_models/crate_washing/crate_with_handles_v5/black_crate.stl" />
+    <mesh name="crate_box_col_00" file="../sim_models/crate_washing/crate_with_handles_v5/collision/part_00.obj" />
+    <mesh name="crate_box_col_01" file="../sim_models/crate_washing/crate_with_handles_v5/collision/part_01.obj" />
+    <mesh name="crate_box_col_02" file="../sim_models/crate_washing/crate_with_handles_v5/collision/part_02.obj" />
+    <mesh name="crate_box_col_03" file="../sim_models/crate_washing/crate_with_handles_v5/collision/part_03.obj" />
+    <mesh name="crate_box_col_04" file="../sim_models/crate_washing/crate_with_handles_v5/collision/part_04.obj" />
+    <mesh name="crate_box_col_05" file="../sim_models/crate_washing/crate_with_handles_v5/collision/part_05.obj" />
+    <mesh name="crate_box_col_06" file="../sim_models/crate_washing/crate_with_handles_v5/collision/part_06.obj" />
+    <texture type="skybox" builtin="gradient" rgb1="1.0 1.0 1.0" rgb2="0.98 0.98 0.98" width="512" height="3072" />
+    <texture type="2d" name="bosch_logo" file="../sim_models/crate_washing/bosch_logo.png" />
+    <material name="bosch_logo_mat" texture="bosch_logo" texuniform="false" texrepeat="1 1" />
   </asset>
-
   <worldbody>
-    <!-- Lighting: soft overhead fill + a directional key light. -->
-    <light pos="0 0 2.5" dir="0 0 -1" directional="true"
-      diffuse="0.45 0.45 0.45" specular="0.0 0.0 0.0"/>
-    <light pos="1.0 -1.0 2.5" dir="-0.4 0.4 -1" directional="true"
-      diffuse="0.25 0.25 0.25" specular="0.0 0.0 0.0"/>
-
-    <!-- ==================== CLEAN WHITE ROOM ==================== -->
-    <!-- Interior dimensions: 8.2296 x 6.858 x 2.7432 m centered on world XY origin. -->
-    <geom name="floor"    type="box" pos="0 0 -0.025"
-          size="4.1648 3.4790 0.025" material="room_floor"
-          contype="1" conaffinity="1" group="2"/>
-    <geom name="ceiling"  type="box" pos="0 0 2.7682"
-          size="4.1648 3.4790 0.025" material="room_ceiling"
-          contype="0" conaffinity="0" group="2"/>
-    <geom name="wall_xpos" type="box" pos="4.1398 0 1.3716"
-          size="0.025 3.4540 1.3716" material="room_white"
-          contype="0" conaffinity="0" group="2"/>
-    <geom name="wall_xneg" type="box" pos="-4.1398 0 1.3716"
-          size="0.025 3.4540 1.3716" material="room_white"
-          contype="0" conaffinity="0" group="2"/>
-    <geom name="wall_ypos" type="box" pos="0 3.4540 1.3716"
-          size="4.1648 0.025 1.3716" material="room_white"
-          contype="0" conaffinity="0" group="2"/>
-    <geom name="wall_yneg" type="box" pos="0 -3.4540 1.3716"
-          size="4.1648 0.025 1.3716" material="room_white"
-          contype="0" conaffinity="0" group="2"/>
-
-    <!-- ==================== WALL SIGNAGE ==================== -->
-    <geom name="bosch_sign_xpos" type="plane" pos="4.1098 0 1.5"
-          xyaxes="0 -1 0  0 0 1"
-          size="1.0 0.5625 0.05" material="bosch_logo_mat"
-          contype="0" conaffinity="0" group="2"/>
-    <geom name="bosch_sign_xneg" type="plane" pos="-4.1098 0 1.5"
-          xyaxes="0 1 0  0 0 1"
-          size="1.0 0.5625 0.05" material="bosch_logo_mat"
-          contype="0" conaffinity="0" group="2"/>
-    <geom name="bosch_sign_ypos" type="plane" pos="0 3.4290 1.5"
-          xyaxes="1 0 0  0 0 1"
-          size="1.0 0.5625 0.05" material="bosch_logo_mat"
-          contype="0" conaffinity="0" group="2"/>
-    <geom name="bosch_sign_yneg" type="plane" pos="0 -3.4290 1.5"
-          xyaxes="-1 0 0  0 0 1"
-          size="1.0 0.5625 0.05" material="bosch_logo_mat"
-          contype="0" conaffinity="0" group="2"/>
-
-    <!-- Cameras. `top`: top-down framed over the workspace. `scene`: hero shot. -->
+    <light pos="0 0 2.5" dir="0 0 -1" directional="true" diffuse="0.45 0.45 0.45" specular="0.0 0.0 0.0" />
+    <light pos="1.0 -1.0 2.5" dir="-0.4 0.4 -1" directional="true" diffuse="0.25 0.25 0.25" specular="0.0 0.0 0.0" />
+    <geom name="floor" type="box" pos="0 0 -0.025" size="4.1648 3.4790 0.025" material="room_floor" contype="1" conaffinity="1" group="2" />
+    <geom name="ceiling" type="box" pos="0 0 2.7682" size="4.1648 3.4790 0.025" material="room_ceiling" contype="0" conaffinity="0" group="2" />
+    <geom name="wall_xpos" type="box" pos="4.1398 0 1.3716" size="0.025 3.4540 1.3716" material="room_white" contype="0" conaffinity="0" group="2" />
+    <geom name="wall_xneg" type="box" pos="-4.1398 0 1.3716" size="0.025 3.4540 1.3716" material="room_white" contype="0" conaffinity="0" group="2" />
+    <geom name="wall_ypos" type="box" pos="0 3.4540 1.3716" size="4.1648 0.025 1.3716" material="room_white" contype="0" conaffinity="0" group="2" />
+    <geom name="wall_yneg" type="box" pos="0 -3.4540 1.3716" size="4.1648 0.025 1.3716" material="room_white" contype="0" conaffinity="0" group="2" />
+    <geom name="bosch_sign_xpos" type="plane" pos="4.1098 0 1.5" xyaxes="0 -1 0  0 0 1" size="1.0 0.5625 0.05" material="bosch_logo_mat" contype="0" conaffinity="0" group="2" />
+    <geom name="bosch_sign_xneg" type="plane" pos="-4.1098 0 1.5" xyaxes="0 1 0  0 0 1" size="1.0 0.5625 0.05" material="bosch_logo_mat" contype="0" conaffinity="0" group="2" />
+    <geom name="bosch_sign_ypos" type="plane" pos="0 3.4290 1.5" xyaxes="1 0 0  0 0 1" size="1.0 0.5625 0.05" material="bosch_logo_mat" contype="0" conaffinity="0" group="2" />
+    <geom name="bosch_sign_yneg" type="plane" pos="0 -3.4290 1.5" xyaxes="-1 0 0  0 0 1" size="1.0 0.5625 0.05" material="bosch_logo_mat" contype="0" conaffinity="0" group="2" />
     <body name="top_camera_mount" pos="1.0 -1.5 1.0" quat="0.7071 0.7071 0 0">
-      <camera name="top" pos="0 0 0" xyaxes="1 0 0 0 1 0" fovy="58"/>
+      <camera name="top" pos="0 0 0" xyaxes="1 0 0 0 1 0" fovy="58" />
     </body>
     <body name="scene_camera_mount" pos="-1.4 -1.6 1.6">
-      <camera name="scene" pos="0 0 0" mode="targetbody"
-              target="crate_box_1" fovy="58"/>
+      <camera name="scene" pos="0 0 0" mode="targetbody" target="crate_box_1" fovy="58" />
     </body>
-    <!-- `bimanual_agentview` is a bespoke hero camera for the bimanual
-         crate-washing scene. Robosuite reserves the standard
-         ``agentview`` name and silently overrides the camera's pos/quat
-         at scene-merge time (it keeps the body mount but reuses its own
-         default offsets), so a redefinition of ``agentview`` here is
-         ignored — using a fresh name sidesteps that.
-         Positioned behind-and-above the two robots (which sit at world
-         X=1.74, Y=±0.2 on the ``robot_platform`` at X=1.87), looking
-         back toward the crate stack at world X=1.38. From this angle
-         both Panda arms are visible reaching forward to side-grasp
-         ``crate_box_11`` and the lift motion is clearly framed.
-         ``LiberoBimanualEnv`` defaults its video-capture camera to
-         this name. -->
     <body name="bimanual_agentview_mount" pos="3.0 -1.5 1.8">
-      <camera name="bimanual_agentview" pos="0 0 0" mode="targetbody"
-              target="crate_box_11" fovy="45"/>
+      <camera name="bimanual_agentview" pos="0 0 0" mode="targetbody" target="crate_box_11" fovy="45" />
     </body>
-
-    <!-- ==================== CRATE MACHINE ==================== -->
     <body name="crate_machine" pos="0 0 0" quat="1 0 0 0">
-      <geom name="crate_machine_visual" type="mesh" mesh="crate_machine_visual"
-        material="crate_machine_default" contype="0" conaffinity="0" group="2"/>
-      <!-- Top "table" collision surface; top face flush with the visual at z=0.91 m. -->
-      <geom name="crate_machine_table" type="box"
-        pos="0 0 0.855" size="1.154 0.504 0.05"
-        contype="1" conaffinity="1" group="3"/>
+      <geom name="crate_machine_visual" type="mesh" mesh="crate_machine_visual" material="crate_machine_default" contype="0" conaffinity="0" group="2" />
+      <geom name="crate_machine_col_00" type="mesh" mesh="crate_machine_col_00" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_01" type="mesh" mesh="crate_machine_col_01" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_02" type="mesh" mesh="crate_machine_col_02" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_03" type="mesh" mesh="crate_machine_col_03" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_04" type="mesh" mesh="crate_machine_col_04" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_05" type="mesh" mesh="crate_machine_col_05" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_06" type="mesh" mesh="crate_machine_col_06" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_07" type="mesh" mesh="crate_machine_col_07" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_08" type="mesh" mesh="crate_machine_col_08" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_09" type="mesh" mesh="crate_machine_col_09" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_10" type="mesh" mesh="crate_machine_col_10" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_11" type="mesh" mesh="crate_machine_col_11" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_12" type="mesh" mesh="crate_machine_col_12" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_13" type="mesh" mesh="crate_machine_col_13" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_14" type="mesh" mesh="crate_machine_col_14" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_15" type="mesh" mesh="crate_machine_col_15" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_16" type="mesh" mesh="crate_machine_col_16" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_17" type="mesh" mesh="crate_machine_col_17" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_18" type="mesh" mesh="crate_machine_col_18" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_19" type="mesh" mesh="crate_machine_col_19" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_20" type="mesh" mesh="crate_machine_col_20" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_21" type="mesh" mesh="crate_machine_col_21" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_22" type="mesh" mesh="crate_machine_col_22" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_23" type="mesh" mesh="crate_machine_col_23" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_24" type="mesh" mesh="crate_machine_col_24" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_25" type="mesh" mesh="crate_machine_col_25" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_26" type="mesh" mesh="crate_machine_col_26" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_27" type="mesh" mesh="crate_machine_col_27" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_28" type="mesh" mesh="crate_machine_col_28" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_29" type="mesh" mesh="crate_machine_col_29" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_30" type="mesh" mesh="crate_machine_col_30" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_31" type="mesh" mesh="crate_machine_col_31" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_32" type="mesh" mesh="crate_machine_col_32" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_33" type="mesh" mesh="crate_machine_col_33" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_34" type="mesh" mesh="crate_machine_col_34" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_35" type="mesh" mesh="crate_machine_col_35" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_36" type="mesh" mesh="crate_machine_col_36" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_37" type="mesh" mesh="crate_machine_col_37" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_38" type="mesh" mesh="crate_machine_col_38" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_39" type="mesh" mesh="crate_machine_col_39" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_40" type="mesh" mesh="crate_machine_col_40" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_41" type="mesh" mesh="crate_machine_col_41" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_42" type="mesh" mesh="crate_machine_col_42" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_43" type="mesh" mesh="crate_machine_col_43" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_44" type="mesh" mesh="crate_machine_col_44" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_45" type="mesh" mesh="crate_machine_col_45" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_46" type="mesh" mesh="crate_machine_col_46" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
+      <geom name="crate_machine_col_47" type="mesh" mesh="crate_machine_col_47" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
     </body>
-
-    <!-- ==================== CRATE BOXES ==================== -->
-    <!-- Eleven flat crates stacked beside the machine. crate_box_1..10 are static
-         (no joint) and act as a stable shelf; crate_box_11 (the top crate) has a
-         freejoint so it can be lifted and placed by the bimanual policy. -->
     <body name="crate_box_1" pos="1.38 0 0.0375">
-      <geom name="crate_box_1_visual" type="mesh" mesh="crate_box_visual"
-        material="crate_box_default" contype="1" conaffinity="1" group="2"/>
+      <geom name="crate_box_1_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
     </body>
     <body name="crate_box_2" pos="1.38 0 0.1125">
-      <geom name="crate_box_2_visual" type="mesh" mesh="crate_box_visual"
-        material="crate_box_default" contype="1" conaffinity="1" group="2"/>
+      <geom name="crate_box_2_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
     </body>
     <body name="crate_box_3" pos="1.38 0 0.1875">
-      <geom name="crate_box_3_visual" type="mesh" mesh="crate_box_visual"
-        material="crate_box_default" contype="1" conaffinity="1" group="2"/>
+      <geom name="crate_box_3_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
     </body>
     <body name="crate_box_4" pos="1.38 0 0.2625">
-      <geom name="crate_box_4_visual" type="mesh" mesh="crate_box_visual"
-        material="crate_box_default" contype="1" conaffinity="1" group="2"/>
+      <geom name="crate_box_4_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
     </body>
     <body name="crate_box_5" pos="1.38 0 0.3375">
-      <geom name="crate_box_5_visual" type="mesh" mesh="crate_box_visual"
-        material="crate_box_default" contype="1" conaffinity="1" group="2"/>
+      <geom name="crate_box_5_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
     </body>
     <body name="crate_box_6" pos="1.38 0 0.4125">
-      <geom name="crate_box_6_visual" type="mesh" mesh="crate_box_visual"
-        material="crate_box_default" contype="1" conaffinity="1" group="2"/>
+      <geom name="crate_box_6_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
     </body>
     <body name="crate_box_7" pos="1.38 0 0.4875">
-      <geom name="crate_box_7_visual" type="mesh" mesh="crate_box_visual"
-        material="crate_box_default" contype="1" conaffinity="1" group="2"/>
+      <geom name="crate_box_7_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
     </body>
     <body name="crate_box_8" pos="1.38 0 0.5625">
-      <geom name="crate_box_8_visual" type="mesh" mesh="crate_box_visual"
-        material="crate_box_default" contype="1" conaffinity="1" group="2"/>
+      <geom name="crate_box_8_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
     </body>
     <body name="crate_box_9" pos="1.38 0 0.6375">
-      <geom name="crate_box_9_visual" type="mesh" mesh="crate_box_visual"
-        material="crate_box_default" contype="1" conaffinity="1" group="2"/>
+      <geom name="crate_box_9_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
     </body>
     <body name="crate_box_10" pos="1.38 0 0.7125">
-      <geom name="crate_box_10_visual" type="mesh" mesh="crate_box_visual"
-        material="crate_box_default" contype="1" conaffinity="1" group="2"/>
+      <geom name="crate_box_10_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
     </body>
     <body name="crate_box_11" pos="1.38 0 0.7875">
-      <freejoint name="crate_box_11_free"/>
-      <inertial pos="0 0 0" mass="1.0" diaginertia="0.02344 0.01188 0.03438"/>
-      <geom name="crate_box_11_visual" type="mesh" mesh="crate_box_visual"
-        material="crate_box_default" contype="1" conaffinity="1" group="2"/>
+      <freejoint name="crate_box_11_free" />
+      <inertial pos="0 0 0" mass="1.0" diaginertia="0.02344 0.01188 0.03438" />
+      <geom name="crate_box_11_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="0" conaffinity="0" group="2" />
+      <geom name="crate_box_11_col_00" type="mesh" mesh="crate_box_col_00" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_11_col_01" type="mesh" mesh="crate_box_col_01" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_11_col_02" type="mesh" mesh="crate_box_col_02" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_11_col_03" type="mesh" mesh="crate_box_col_03" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_11_col_04" type="mesh" mesh="crate_box_col_04" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_11_col_05" type="mesh" mesh="crate_box_col_05" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_11_col_06" type="mesh" mesh="crate_box_col_06" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
     </body>
-
-    <!-- Robot platform that the two Panda bases sit on; top at z=0.76 m. -->
     <body name="robot_platform" pos="1.87 0 0.38" quat="1 0 0 0">
-      <geom name="robot_platform_visual" type="box" size="0.2625 0.3875 0.38"
-        material="crate_machine_default" contype="1" conaffinity="1" group="2"/>
+      <geom name="robot_platform_visual" type="box" size="0.2625 0.3875 0.38" material="crate_machine_default" contype="1" conaffinity="1" group="2" />
     </body>
   </worldbody>
-
-  <!-- ==================== HOME KEYFRAME (free body only) ==================== -->
-  <!-- Only the top crate's freejoint qpos is kept; the panda joint qpos columns
-       from the source XML are removed because the arms come from robosuite at
-       runtime and are placed by the LIBERO problem class. -->
   <keyframe>
-    <key name="home" qpos="1.38 0 0.7875 1 0 0 0"/>
+    <key name="home" qpos="1.38 0 0.7875 1 0 0 0" />
   </keyframe>
 </mujoco>

@@ -87,6 +87,15 @@ def main():
         default=1.0,
         help="Wall-clock playback factor. 1.0 = real-time; 2.0 = half speed.",
     )
+    parser.add_argument(
+        "--collision_mesh",
+        "--collision-mesh",
+        action="store_true",
+        help=(
+            "Render the active decomposed collision meshes for the crate and "
+            "washing machine in the viewer."
+        ),
+    )
     args = parser.parse_args()
 
     bench = benchmark.get_benchmark_dict()[BENCHMARK_NAME]()
@@ -96,7 +105,11 @@ def main():
     print(f"[view] task={task.name}  language={task.language!r}")
     print(f"[view] bddl={bddl_path}")
 
-    env = OffScreenRenderEnv(bddl_file_name=bddl_path)
+    env = OffScreenRenderEnv(
+        bddl_file_name=bddl_path,
+        render_collision_mesh=args.collision_mesh,
+        render_visual_mesh=True,
+    )
     env.reset()
 
     if args.use_init:
@@ -118,6 +131,10 @@ def main():
     # `_model` / `_data`. The passive viewer wants the raw objects.
     mj_model = env.env.sim.model._model
     mj_data = env.env.sim.data._data
+    crate_collision_count = 0
+    machine_collision_count = 0
+    if args.collision_mesh:
+        crate_collision_count, machine_collision_count = show_contact_surfaces(mj_model)
 
     action_dim = env.env.action_dim
     print(f"[view] action_dim={action_dim}")
@@ -125,6 +142,11 @@ def main():
         f"[view] stage_idx (post-reset)={env.env.crate_stage_idx} "
         f"/ {env.env.crate_num_stages}"
     )
+    if args.collision_mesh:
+        print(
+            "[view] collision mesh overlay enabled "
+            f"(crate={crate_collision_count}, machine={machine_collision_count})"
+        )
 
     noop = np.zeros(action_dim, dtype=np.float64)
     sim_dt = float(mj_model.opt.timestep)
@@ -176,6 +198,25 @@ def main():
             time.sleep(0.01)
 
     env.close()
+
+
+def show_contact_surfaces(mj_model):
+    """Make crate and washing-machine contact geoms visible in the passive viewer."""
+    crate_count = 0
+    machine_count = 0
+    for gid in range(mj_model.ngeom):
+        gname = mujoco.mj_id2name(mj_model, mujoco.mjtObj.mjOBJ_GEOM, gid) or ""
+        if gname.startswith("crate_box_11_col_") or gname.startswith(
+            "crate_box_11_handle_"
+        ):
+            crate_count += 1
+            mj_model.geom_group[gid] = 2
+            mj_model.geom_rgba[gid] = (1.0, 0.45, 0.0, 0.45)
+        elif gname.startswith("crate_machine_col_"):
+            machine_count += 1
+            mj_model.geom_group[gid] = 2
+            mj_model.geom_rgba[gid] = (0.1, 0.7, 1.0, 0.35)
+    return crate_count, machine_count
 
 
 if __name__ == "__main__":
