@@ -210,11 +210,15 @@ class BimanualBDDLBaseDomain(TwoArmEnv):
         """
         # Frame the workspace from front-left, looking back at the crate
         # stack. Positioned outside the robot platform (x ≈ +1.87) so the
-        # arms and crate stack are both in frame.
+        # arms and crate stack are both in frame. The orientation is a
+        # look-at toward the two-arm grasp region (world ≈ (1.55, 0,
+        # 0.95), between crate_box_11 @ x=1.38 and the robots @ x=1.74);
+        # the previous quat looked back at the machine/wall and missed
+        # the arms entirely.
         mujoco_arena.set_camera(
             camera_name="agentview",
             pos=[1.0, -1.5, 1.6],
-            quat=[0.6532815, 0.6532815, 0.2705981, 0.2705981],
+            quat=[0.816937, 0.5495927, -0.0975822, -0.1450502],
         )
         mujoco_arena.set_camera(
             camera_name="frontview",

@@ -101,6 +101,13 @@
     <body name="bimanual_agentview_mount" pos="3.0 -1.5 1.8">
       <camera name="bimanual_agentview" pos="0 0 0" mode="targetbody" target="crate_box_11" fovy="45" />
     </body>
+    <!-- `arms_frontside`: side view from the front of the two arms
+         (Pandas at world X=1.74, Y=+/-0.2 reaching -X toward the crate
+         stack at X=1.38). Re-added on top of upstream a612973 because
+         the drawer-mirror task YAMLs record this camera. -->
+    <body name="arms_frontside_mount" pos="0.3 1.7 1.35">
+      <camera name="arms_frontside" pos="0 0 0" mode="targetbody" target="crate_box_11" fovy="50" />
+    </body>
     <body name="crate_machine" pos="0 0 0" quat="1 0 0 0">
       <geom name="crate_machine_visual" type="mesh" mesh="crate_machine_visual" material="crate_machine_default" contype="0" conaffinity="0" group="2" />
       <geom name="crate_machine_col_00" type="mesh" mesh="crate_machine_col_00" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
@@ -153,34 +160,104 @@
       <geom name="crate_machine_col_47" type="mesh" mesh="crate_machine_col_47" contype="1" conaffinity="1" group="3" friction="1.0 0.005 0.0001" rgba="0.1 0.7 1 0.18" />
     </body>
     <body name="crate_box_1" pos="1.38 0 0.0375">
-      <geom name="crate_box_1_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
+      <geom name="crate_box_1_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="0" conaffinity="0" group="2" />
+      <geom name="crate_box_1_col_00" type="mesh" mesh="crate_box_col_00" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_1_col_01" type="mesh" mesh="crate_box_col_01" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_1_col_02" type="mesh" mesh="crate_box_col_02" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_1_col_03" type="mesh" mesh="crate_box_col_03" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_1_col_04" type="mesh" mesh="crate_box_col_04" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_1_col_05" type="mesh" mesh="crate_box_col_05" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_1_col_06" type="mesh" mesh="crate_box_col_06" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
     </body>
     <body name="crate_box_2" pos="1.38 0 0.1125">
-      <geom name="crate_box_2_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
+      <geom name="crate_box_2_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="0" conaffinity="0" group="2" />
+      <geom name="crate_box_2_col_00" type="mesh" mesh="crate_box_col_00" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_2_col_01" type="mesh" mesh="crate_box_col_01" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_2_col_02" type="mesh" mesh="crate_box_col_02" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_2_col_03" type="mesh" mesh="crate_box_col_03" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_2_col_04" type="mesh" mesh="crate_box_col_04" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_2_col_05" type="mesh" mesh="crate_box_col_05" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_2_col_06" type="mesh" mesh="crate_box_col_06" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
     </body>
     <body name="crate_box_3" pos="1.38 0 0.1875">
-      <geom name="crate_box_3_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
+      <geom name="crate_box_3_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="0" conaffinity="0" group="2" />
+      <geom name="crate_box_3_col_00" type="mesh" mesh="crate_box_col_00" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_3_col_01" type="mesh" mesh="crate_box_col_01" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_3_col_02" type="mesh" mesh="crate_box_col_02" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_3_col_03" type="mesh" mesh="crate_box_col_03" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_3_col_04" type="mesh" mesh="crate_box_col_04" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_3_col_05" type="mesh" mesh="crate_box_col_05" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_3_col_06" type="mesh" mesh="crate_box_col_06" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
     </body>
     <body name="crate_box_4" pos="1.38 0 0.2625">
-      <geom name="crate_box_4_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
+      <geom name="crate_box_4_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="0" conaffinity="0" group="2" />
+      <geom name="crate_box_4_col_00" type="mesh" mesh="crate_box_col_00" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_4_col_01" type="mesh" mesh="crate_box_col_01" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_4_col_02" type="mesh" mesh="crate_box_col_02" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_4_col_03" type="mesh" mesh="crate_box_col_03" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_4_col_04" type="mesh" mesh="crate_box_col_04" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_4_col_05" type="mesh" mesh="crate_box_col_05" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_4_col_06" type="mesh" mesh="crate_box_col_06" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
     </body>
     <body name="crate_box_5" pos="1.38 0 0.3375">
-      <geom name="crate_box_5_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
+      <geom name="crate_box_5_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="0" conaffinity="0" group="2" />
+      <geom name="crate_box_5_col_00" type="mesh" mesh="crate_box_col_00" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_5_col_01" type="mesh" mesh="crate_box_col_01" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_5_col_02" type="mesh" mesh="crate_box_col_02" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_5_col_03" type="mesh" mesh="crate_box_col_03" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_5_col_04" type="mesh" mesh="crate_box_col_04" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_5_col_05" type="mesh" mesh="crate_box_col_05" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_5_col_06" type="mesh" mesh="crate_box_col_06" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
     </body>
     <body name="crate_box_6" pos="1.38 0 0.4125">
-      <geom name="crate_box_6_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
+      <geom name="crate_box_6_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="0" conaffinity="0" group="2" />
+      <geom name="crate_box_6_col_00" type="mesh" mesh="crate_box_col_00" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_6_col_01" type="mesh" mesh="crate_box_col_01" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_6_col_02" type="mesh" mesh="crate_box_col_02" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_6_col_03" type="mesh" mesh="crate_box_col_03" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_6_col_04" type="mesh" mesh="crate_box_col_04" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_6_col_05" type="mesh" mesh="crate_box_col_05" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_6_col_06" type="mesh" mesh="crate_box_col_06" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
     </body>
     <body name="crate_box_7" pos="1.38 0 0.4875">
-      <geom name="crate_box_7_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
+      <geom name="crate_box_7_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="0" conaffinity="0" group="2" />
+      <geom name="crate_box_7_col_00" type="mesh" mesh="crate_box_col_00" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_7_col_01" type="mesh" mesh="crate_box_col_01" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_7_col_02" type="mesh" mesh="crate_box_col_02" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_7_col_03" type="mesh" mesh="crate_box_col_03" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_7_col_04" type="mesh" mesh="crate_box_col_04" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_7_col_05" type="mesh" mesh="crate_box_col_05" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_7_col_06" type="mesh" mesh="crate_box_col_06" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
     </body>
     <body name="crate_box_8" pos="1.38 0 0.5625">
-      <geom name="crate_box_8_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
+      <geom name="crate_box_8_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="0" conaffinity="0" group="2" />
+      <geom name="crate_box_8_col_00" type="mesh" mesh="crate_box_col_00" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_8_col_01" type="mesh" mesh="crate_box_col_01" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_8_col_02" type="mesh" mesh="crate_box_col_02" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_8_col_03" type="mesh" mesh="crate_box_col_03" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_8_col_04" type="mesh" mesh="crate_box_col_04" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_8_col_05" type="mesh" mesh="crate_box_col_05" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_8_col_06" type="mesh" mesh="crate_box_col_06" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
     </body>
     <body name="crate_box_9" pos="1.38 0 0.6375">
-      <geom name="crate_box_9_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
+      <geom name="crate_box_9_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="0" conaffinity="0" group="2" />
+      <geom name="crate_box_9_col_00" type="mesh" mesh="crate_box_col_00" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_9_col_01" type="mesh" mesh="crate_box_col_01" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_9_col_02" type="mesh" mesh="crate_box_col_02" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_9_col_03" type="mesh" mesh="crate_box_col_03" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_9_col_04" type="mesh" mesh="crate_box_col_04" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_9_col_05" type="mesh" mesh="crate_box_col_05" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_9_col_06" type="mesh" mesh="crate_box_col_06" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
     </body>
     <body name="crate_box_10" pos="1.38 0 0.7125">
-      <geom name="crate_box_10_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="1" conaffinity="1" group="2" />
+      <geom name="crate_box_10_visual" type="mesh" mesh="crate_box_visual" material="crate_box_default" contype="0" conaffinity="0" group="2" />
+      <geom name="crate_box_10_col_00" type="mesh" mesh="crate_box_col_00" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_10_col_01" type="mesh" mesh="crate_box_col_01" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_10_col_02" type="mesh" mesh="crate_box_col_02" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_10_col_03" type="mesh" mesh="crate_box_col_03" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_10_col_04" type="mesh" mesh="crate_box_col_04" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_10_col_05" type="mesh" mesh="crate_box_col_05" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
+      <geom name="crate_box_10_col_06" type="mesh" mesh="crate_box_col_06" contype="1" conaffinity="1" group="3" friction="1.2 0.1 0.005" rgba="1 0.5 0 0.18" />
     </body>
     <body name="crate_box_11" pos="1.38 0 0.7875">
       <freejoint name="crate_box_11_free" />
