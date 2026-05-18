@@ -8,7 +8,7 @@
   <visual>
     <global azimuth="120" elevation="-20" offwidth="1920" offheight="1080" />
     <quality shadowsize="8192" offsamples="16" />
-    <headlight ambient="0.65 0.65 0.65" diffuse="0.20 0.20 0.20" specular="0 0 0" />
+    <headlight ambient="0.85 0.85 0.85" diffuse="0.40 0.40 0.40" specular="0 0 0" />
     <map znear="0.005" zfar="50" />
     <rgba haze="1.0 1.0 1.0 1" />
   </visual>
@@ -17,7 +17,7 @@
     <material name="room_floor" rgba="0.92 0.92 0.92 1" />
     <material name="room_ceiling" rgba="0.99 0.99 0.99 1" />
     <material name="crate_machine_default" rgba="0.55 0.55 0.60 1" />
-    <material name="crate_box_default" rgba="0.2 0.2 0.2 1" />
+    <material name="crate_box_default" rgba="0.25 0.45 0.70 1" />
     <mesh name="crate_machine_visual" file="../sim_models/crate_washing/crate_machine_flat.obj" scale="0.1 0.1 0.1" />
     <mesh name="crate_machine_col_00" file="../sim_models/crate_washing/crate_machine_collision/part_00.obj" scale="0.1 0.1 0.1" />
     <mesh name="crate_machine_col_01" file="../sim_models/crate_washing/crate_machine_collision/part_01.obj" scale="0.1 0.1 0.1" />
@@ -80,8 +80,8 @@
     <material name="bosch_logo_mat" texture="bosch_logo" texuniform="false" texrepeat="1 1" />
   </asset>
   <worldbody>
-    <light pos="0 0 2.5" dir="0 0 -1" directional="true" diffuse="0.45 0.45 0.45" specular="0.0 0.0 0.0" />
-    <light pos="1.0 -1.0 2.5" dir="-0.4 0.4 -1" directional="true" diffuse="0.25 0.25 0.25" specular="0.0 0.0 0.0" />
+    <light pos="0 0 2.5" dir="0 0 -1" directional="true" diffuse="0.65 0.65 0.65" specular="0.0 0.0 0.0" />
+    <light pos="1.0 -1.0 2.5" dir="-0.4 0.4 -1" directional="true" diffuse="0.45 0.45 0.45" specular="0.0 0.0 0.0" />
     <geom name="floor" type="box" pos="0 0 -0.025" size="4.1648 3.4790 0.025" material="room_floor" contype="1" conaffinity="1" group="2" />
     <geom name="ceiling" type="box" pos="0 0 2.7682" size="4.1648 3.4790 0.025" material="room_ceiling" contype="0" conaffinity="0" group="2" />
     <geom name="wall_xpos" type="box" pos="4.1398 0 1.3716" size="0.025 3.4540 1.3716" material="room_white" contype="0" conaffinity="0" group="2" />
