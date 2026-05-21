@@ -22,6 +22,8 @@
     <texture file="living_room/living_room_wall_unit.png" name="tex-living_room" type="2d"/>
     <material name="living_room" reflectance="0.5" texrepeat="1 1" texture="tex-living_room" texuniform="false"/>
     <mesh file="living_room/visual/living_room_vis.msh" name="living_room_vis" scale="0.7 0.7 0.7"/>
+    <!-- ZED 2i visual mesh for the agentview camera body (used by viz scripts). -->
+    <mesh name="zed_agent_mesh" file="/home/nvidia/graph-as-policy_2/third_party/LIBERO-PosVar/libero/libero/assets/cameras/zed2i.stl"/>
   </asset>
   <worldbody>
     <!-- Floor -->
@@ -60,6 +62,25 @@
     <camera mode="fixed" name="birdview" pos="-0.2 0 3.0" quat="0.7071 0 0 0.7071"/>
     <!-- agent view -->
     <camera mode="fixed" name="agentview" pos="0.5 0 1.35" quat="0.653 0.271 0.271 0.653"/>
+    <!-- ZED 2i visual at the agentview pose. The pose here matches the runtime
+         override applied by Libero_Floor_Manipulation._setup_camera (which
+         re-aims `agentview` to this pos/quat after the XML is loaded). The
+         geom is offset 2 cm along +z (behind the lens) so the camera doesn't
+         sit inside the mesh, and rotated 90 deg about +y so the mesh's optical
+         axis (+x_mesh) aligns with the camera's view direction (-z). -->
+    <body name="zed_agentview_visual"
+          pos="0.8965773716836134 0 0.65"
+          quat="0.6182166934013367 0.3432307541370392 0.3432314395904541 0.6182177066802979">
+      <!-- Geom quat "+90 deg about +z" puts the mesh's long axis (stereo bar)
+           along world +y. The +90° was found empirically: MuJoCo's mesh
+           principal-axes alignment composes into the stored geom_quat, so the
+           rotation that maps mesh-native +z onto body +x has to be expressed
+           in terms of the post-alignment frame. -->
+      <geom name="zed_agentview_geom" mesh="zed_agent_mesh" type="mesh"
+            pos="0 0 0.020" quat="0.7071 0 0 0.7071"
+            rgba="0.06 0.06 0.06 1"
+            contype="0" conaffinity="0" mass="0" group="1"/>
+    </body>
 
     <!-- side view -->
     <camera mode="fixed" name="sideview" pos="-0.05651774593317116 1.2761224129427358 1.4879572214102434" quat="0.009905065491771751 0.006877963156909582 0.5912228352893879 0.806418094001364" />

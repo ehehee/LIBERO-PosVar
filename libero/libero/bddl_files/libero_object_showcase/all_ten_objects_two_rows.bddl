@@ -1,0 +1,164 @@
+(define (problem LIBERO_Floor_Manipulation)
+  (:domain robosuite)
+  (:language all ten libero objects arranged in two rows)
+    (:regions
+      (back_row_0
+          (:target floor)
+          (:ranges (
+              (-0.13 -0.23 -0.07 -0.17)
+            )
+          )
+          (:yaw_rotation (
+              (0 0)
+            )
+          )
+      )
+      (back_row_1
+          (:target floor)
+          (:ranges (
+              (-0.13 -0.13 -0.07 -0.07)
+            )
+          )
+          (:yaw_rotation (
+              (0 0)
+            )
+          )
+      )
+      (back_row_2
+          (:target floor)
+          (:ranges (
+              (-0.13 -0.03 -0.07 0.03)
+            )
+          )
+          (:yaw_rotation (
+              (0 0)
+            )
+          )
+      )
+      (back_row_3
+          (:target floor)
+          (:ranges (
+              (-0.13 0.07 -0.07 0.13)
+            )
+          )
+          (:yaw_rotation (
+              (0 0)
+            )
+          )
+      )
+      (back_row_4
+          (:target floor)
+          (:ranges (
+              (-0.13 0.17 -0.07 0.23)
+            )
+          )
+          (:yaw_rotation (
+              (0 0)
+            )
+          )
+      )
+      (front_row_0
+          (:target floor)
+          (:ranges (
+              (0.13 -0.23 0.19 -0.17)
+            )
+          )
+          (:yaw_rotation (
+              (0 0)
+            )
+          )
+      )
+      (front_row_1
+          (:target floor)
+          (:ranges (
+              (0.13 -0.13 0.19 -0.07)
+            )
+          )
+          (:yaw_rotation (
+              (0 0)
+            )
+          )
+      )
+      (front_row_2
+          (:target floor)
+          (:ranges (
+              (0.13 -0.03 0.19 0.03)
+            )
+          )
+          (:yaw_rotation (
+              (0 0)
+            )
+          )
+      )
+      (front_row_3
+          (:target floor)
+          (:ranges (
+              (0.13 0.07 0.19 0.13)
+            )
+          )
+          (:yaw_rotation (
+              (0 0)
+            )
+          )
+      )
+      (front_row_4
+          (:target floor)
+          (:ranges (
+              (0.13 0.17 0.19 0.23)
+            )
+          )
+          (:yaw_rotation (
+              (0 0)
+            )
+          )
+      )
+    )
+
+  (:fixtures
+    floor - floor
+  )
+
+  (:objects
+    alphabet_soup_1 - alphabet_soup
+    bbq_sauce_1 - bbq_sauce
+    butter_1 - butter
+    chocolate_pudding_1 - chocolate_pudding
+    cream_cheese_1 - cream_cheese
+    ketchup_1 - ketchup
+    milk_1 - milk
+    orange_juice_1 - orange_juice
+    salad_dressing_1 - salad_dressing
+    tomato_sauce_1 - tomato_sauce
+  )
+
+  (:obj_of_interest
+    alphabet_soup_1
+    bbq_sauce_1
+    butter_1
+    chocolate_pudding_1
+    cream_cheese_1
+    ketchup_1
+    milk_1
+    orange_juice_1
+    salad_dressing_1
+    tomato_sauce_1
+  )
+
+  (:init
+    (On alphabet_soup_1 floor_front_row_0)
+    (On bbq_sauce_1 floor_front_row_1)
+    (On butter_1 floor_front_row_2)
+    (On chocolate_pudding_1 floor_front_row_3)
+    (On cream_cheese_1 floor_front_row_4)
+    (On ketchup_1 floor_back_row_0)
+    (On milk_1 floor_back_row_1)
+    (On orange_juice_1 floor_back_row_2)
+    (On salad_dressing_1 floor_back_row_3)
+    (On tomato_sauce_1 floor_back_row_4)
+  )
+
+  (:goal
+    (And (On alphabet_soup_1 floor_front_row_0))
+  )
+
+)
