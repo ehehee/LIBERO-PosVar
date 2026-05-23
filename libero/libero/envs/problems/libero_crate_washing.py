@@ -38,11 +38,18 @@ from libero.envs.bimanual_bddl_base_domain import (
 #     world origin; we use slightly tighter xy bounds so a crate that just
 #     dangles off the edge still doesn't register as placed.
 _LIFTED_Z_MIN = 0.90
-_PLACED_Z_MIN = 0.92
+_PLACED_Z_MIN = 0.90
 _PLACED_Z_MAX = 1.00
-_PLACED_X_HALF = 1.05
-_PLACED_Y_HALF = 0.45
+_PLACED_X_HALF = 1.154
+_PLACED_Y_HALF = 0.504
 _TOP_CRATE_BODY = "crate_box_11"
+_GRIPPER_COLLISION_FRICTION = np.array([0.1, 0.005, 0.0001], dtype=np.float64)
+_GRIPPER_COLLISION_SUFFIXES = (
+    "finger1_collision",
+    "finger1_pad_collision",
+    "finger2_collision",
+    "finger2_pad_collision",
+)
 
 
 @register_problem
@@ -96,7 +103,19 @@ class Libero_Crate_Washing(BimanualBDDLBaseDomain):
 
     def _reset_internal(self):
         super()._reset_internal()
+        self._apply_gripper_collision_friction()
         self._crate_stage_idx = 0
+
+    def _apply_gripper_collision_friction(self):
+        """Crate-washing-only Panda finger contact tuning.
+
+        The shared PandaGripper XML keeps its default friction. We only patch
+        this compiled MuJoCo model instance so other LIBERO tasks are untouched.
+        """
+        model = self.sim.model
+        for geom_id, name in enumerate(model.geom_names):
+            if name.endswith(_GRIPPER_COLLISION_SUFFIXES):
+                model.geom_friction[geom_id] = _GRIPPER_COLLISION_FRICTION
 
     def _top_crate_pos(self):
         body_id = self.sim.model.body_name2id(_TOP_CRATE_BODY)
@@ -120,6 +139,22 @@ class Libero_Crate_Washing(BimanualBDDLBaseDomain):
         while self._crate_stage_idx < len(flags) and flags[self._crate_stage_idx]:
             self._crate_stage_idx += 1
         return self._crate_stage_idx >= len(flags)
+
+    def reward(self, action=None):
+        """Partial sparse reward: fraction of monotonic stages reached.
+
+        ``_check_success`` is still the strict binary completion signal used
+        for pass/fail. Reward is more diagnostic:
+
+        * 0.0: neither lift nor placement has been observed
+        * 0.5: the top crate was lifted off the stack
+        * 1.0: the top crate reached the table placement box
+        """
+        self._check_success()
+        reward = float(self._crate_stage_idx) / float(self.crate_num_stages)
+        if self.reward_scale is not None:
+            reward *= self.reward_scale / 1.0
+        return reward
 
     # ------------------------------------------------------------------
     # External read-only progress accessors (mirror popcorn convention)
