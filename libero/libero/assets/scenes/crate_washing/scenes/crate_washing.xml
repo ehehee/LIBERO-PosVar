@@ -76,11 +76,8 @@
     <mesh name="crate_box_col_05" file="../sim_models/crate_washing/crate_with_handles_v5/collision/part_05.obj" />
     <mesh name="crate_box_col_06" file="../sim_models/crate_washing/crate_with_handles_v5/collision/part_06.obj" />
     <texture type="skybox" builtin="gradient" rgb1="1.0 1.0 1.0" rgb2="0.98 0.98 0.98" width="512" height="3072" />
-<<<<<<< Updated upstream
-=======
     <!-- <texture type="2d" name="bosch_logo" file="../sim_models/crate_washing/bosch_logo.png" />
     <material name="bosch_logo_mat" texture="bosch_logo" texuniform="false" texrepeat="1 1" /> -->
->>>>>>> Stashed changes
   </asset>
   <worldbody>
     <light pos="0 0 2.5" dir="0 0 -1" directional="true" diffuse="0.70 0.70 0.70" specular="0.0 0.0 0.0" />
@@ -92,13 +89,10 @@
     <geom name="wall_xneg" type="box" pos="-4.1398 0 1.3716" size="0.025 3.4540 1.3716" material="room_white" contype="0" conaffinity="0" group="2" />
     <geom name="wall_ypos" type="box" pos="0 3.4540 1.3716" size="4.1648 0.025 1.3716" material="room_white" contype="0" conaffinity="0" group="2" />
     <geom name="wall_yneg" type="box" pos="0 -3.4540 1.3716" size="4.1648 0.025 1.3716" material="room_white" contype="0" conaffinity="0" group="2" />
-<<<<<<< Updated upstream
-=======
     <!-- <geom name="bosch_sign_xpos" type="plane" pos="4.1098 0 1.5" xyaxes="0 -1 0  0 0 1" size="1.0 0.5625 0.05" material="bosch_logo_mat" contype="0" conaffinity="0" group="2" />
     <geom name="bosch_sign_xneg" type="plane" pos="-4.1098 0 1.5" xyaxes="0 1 0  0 0 1" size="1.0 0.5625 0.05" material="bosch_logo_mat" contype="0" conaffinity="0" group="2" />
     <geom name="bosch_sign_ypos" type="plane" pos="0 3.4290 1.5" xyaxes="1 0 0  0 0 1" size="1.0 0.5625 0.05" material="bosch_logo_mat" contype="0" conaffinity="0" group="2" />
     <geom name="bosch_sign_yneg" type="plane" pos="0 -3.4290 1.5" xyaxes="-1 0 0  0 0 1" size="1.0 0.5625 0.05" material="bosch_logo_mat" contype="0" conaffinity="0" group="2" /> -->
->>>>>>> Stashed changes
     <body name="top_camera_mount" pos="1.0 -1.5 1.0" quat="0.7071 0.7071 0 0">
       <camera name="top" pos="0 0 0" xyaxes="1 0 0 0 1 0" fovy="58" />
     </body>
