@@ -39,7 +39,7 @@ from libero.envs.bimanual_bddl_base_domain import (
 #     dangles off the edge still doesn't register as placed.
 _LIFTED_Z_MIN = 0.90
 _PLACED_Z_MIN = 0.90
-_PLACED_Z_MAX = 1.00
+_PLACED_Z_MAX = 1.2  # upside-down crate rests at z≈1.00–1.01; transport height ≈1.10
 _PLACED_X_HALF = 1.154
 _PLACED_Y_HALF = 0.504
 _TOP_CRATE_BODY = "crate_box_11"
